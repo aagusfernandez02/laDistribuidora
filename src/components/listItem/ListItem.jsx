@@ -13,7 +13,7 @@ const ListItem = ({ producto, isAdmin, setIsOpen, setIdProductModal, setMustRefr
     // setIsOpen(true);
     try {
       const deleteProduct = async()=>{
-        await axios.delete(`https://ladistribuidora.herokuapp.com//api/products/${producto._id}`)
+        await axios.delete(`https://ladistribuidora.herokuapp.com/api/products/${producto._id}`)
       }
       deleteProduct();
       setMustRefresh(!mustRefresh);

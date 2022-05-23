@@ -21,7 +21,7 @@ const Modal = ({ idProductModal, closeModal, setMustRefresh, mustRefresh }) => {
         };
         console.log(body);
         const res = await axios.put(
-          `https://ladistribuidora.herokuapp.com//api/products/${idProductModal}`,
+          `https://ladistribuidora.herokuapp.com/api/products/${idProductModal}`,
           body
         );
         setRefresh(!refresh);
@@ -38,7 +38,7 @@ const Modal = ({ idProductModal, closeModal, setMustRefresh, mustRefresh }) => {
     const requestProduct = async () => {
       try {
         const res = await axios.get(
-          `https://ladistribuidora.herokuapp.com//api/products/${idProductModal}`
+          `https://ladistribuidora.herokuapp.com/api/products/${idProductModal}`
         );
         setProduct(res.data);
         console.log(res.data);

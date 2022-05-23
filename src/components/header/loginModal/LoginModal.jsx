@@ -14,7 +14,7 @@ const LoginModal = ({ closeModal, setIsAdmin, setIsSigned }) => {
         password: valores.password,
       };
       const res = await axios.post(
-        "https://ladistribuidora.herokuapp.com//api/auth/login",
+        "https://ladistribuidora.herokuapp.com/api/auth/login",
         body
       );
       closeModal();
