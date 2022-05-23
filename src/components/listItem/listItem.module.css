@@ -1,0 +1,79 @@
+.listItem {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 1px solid var(--dark-gray);
+}
+
+.listItem img {
+    object-fit: contain;
+    height: 150px;
+    width: 150px;
+    margin: 0.25em;
+    padding-left: 1%;
+    padding-right: 1%;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.listItem p {
+    text-align: center;
+    font-size: medium;
+}
+
+.listItem_item {
+    min-width: 20%;
+}
+
+.container {
+    position: relative;
+}
+
+.editIcon {
+    cursor: pointer;
+    font-size: x-large;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 10px;
+    left: 10px;
+    padding: 5px;
+    border-radius: 20px;
+    background-color: var(--light-gray);
+    /* Shadow */
+    box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.5);
+    transition: .5s;
+}
+
+.editIcon:hover {
+    transform: translateY(-2px);
+    transform: translateX(-2px);
+    box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.5);
+    transition: .5s;
+}
+
+.delete {
+    top: 60px;
+}
+
+@media (max-width: 768px) {
+    .listItem p {
+        font-size: small;
+    }
+    .listItem img {
+        height: 120px;
+        width: 120px;
+    }
+}
+
+@media (max-width: 480px) {
+    .listItem p {
+        font-size: x-small;
+    }
+}

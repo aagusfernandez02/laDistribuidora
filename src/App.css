@@ -1,0 +1,18 @@
+:root {
+    --white: #F4F4F2;
+    --light-gray: #E8E8E8;
+    --gray: #BBBFCA;
+    --dark-gray: #495464;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+input::placeholder {
+    opacity: .3;
+    color: var(--dark-gray);
+}
