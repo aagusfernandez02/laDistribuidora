@@ -20,7 +20,7 @@ const ModalNewProduct = ({ closeModal, setMustRefresh, mustRefresh }) => {
         };
         console.log(body);
         const res = await axios.post(
-          `http://localhost:5000/api/products/`,
+          `https://ladistribuidora.herokuapp.com//api/products/`,
           body
         );
         setRefresh(!refresh);

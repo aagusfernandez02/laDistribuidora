@@ -9,7 +9,7 @@ const List = ({isAdmin, setIsOpen, setIdProductModal, mustRefresh, setMustRefres
   useEffect( ()=>{
     const makeRequest = async()=>{
       try {
-        const res = await axios.get("http://localhost:5000/api/products");
+        const res = await axios.get("https://ladistribuidora.herokuapp.com//api/products");
         // console.log(res);
         setProducts(res.data);
       } catch (error) {
