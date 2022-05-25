@@ -27,6 +27,8 @@ function App() {
       localStorage.setItem("isSigned", "true");
     } else {
       localStorage.setItem("isSigned", "false");
+      localStorage.setItem("user", "");
+
     }
   }, [isSigned]);
 
