@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import ReactDom from "react-dom";
 import axios from "axios";
 import styles from "./loginModal.module.css";
@@ -26,7 +26,7 @@ const LoginModal = ({ closeModal, setIsAdmin, setIsSigned }) => {
       window.alert("Sesión iniciada correctamente. Bienvenido");
       localStorage.setItem("user",JSON.stringify(res.data));
     } catch (error) {
-      console.log(error.response.data);
+      console.log(error);
     }
   };
 
@@ -38,7 +38,7 @@ const LoginModal = ({ closeModal, setIsAdmin, setIsSigned }) => {
         name: valores.name,
       };
       const res = await axios.post(
-        "/api/auth/register",
+        "https://ladistribuidora.herokuapp.com/api/auth/register",
         body
       );
       closeModal();

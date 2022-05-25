@@ -4,12 +4,12 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: 50vw;
-    height: 60vh;
+    height: auto;
     background-color: #ffffff;
     padding: 50px;
     z-index: 1000;
-    padding-left: 60px;
-    padding-right: 60px;
+    padding-left: 2rem;
+    padding-right: 2rem;
 }
 
 .overlay {
@@ -136,6 +136,11 @@
 }
 
 @media (max-width: 768px) {
+    .modal {
+        width: 75vw;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
     .form img {
         max-height: 100px;
         width: auto;
@@ -151,5 +156,11 @@
     .form button {
         margin-left: 0;
         margin-right: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal {
+        width: 90vw;
     }
 }
