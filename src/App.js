@@ -1,7 +1,6 @@
 import "./App.css";
 import Header from "./components/header/Header";
 import List from "./components/list/List";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Modal from "./components/modal/Modal";
 import ModalNewProduct from "./components/header/modalNewProduct/ModalNewProduct";
@@ -33,7 +32,7 @@ function App() {
   }, [isSigned]);
 
   return (
-    <Router>
+    <>
       <Header
         isAdmin={isAdmin}
         isSigned={isSigned}
@@ -64,7 +63,7 @@ function App() {
           setMustRefresh={setMustRefresh}
         />
       )}
-    </Router>
+    </>
   );
 }
 
