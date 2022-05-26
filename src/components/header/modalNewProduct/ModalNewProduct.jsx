@@ -3,14 +3,16 @@ import ReactDom from "react-dom";
 import axios from "axios";
 import styles from "./modalNewProduct.module.css";
 import { Formik } from "formik";
+import { toast } from 'react-toastify';
 
-const ModalNewProduct = ({ closeModal, setMustRefresh, mustRefresh }) => {
-  const [refresh, setRefresh] = useState(false);
+
+const ModalNewProduct = ({ closeModal, setRefresh, refresh }) => {
+  // const [refresh, setRefresh] = useState(false);
   
 
   const postearProducto = async (valores) => {
     try {
-      if (localStorage.getItem("isAdmin") == "true") {
+      if (localStorage.getItem("isAdmin") === "true") {
         const body = {
           producto: valores.producto,
           marca: valores.marca,
@@ -23,8 +25,10 @@ const ModalNewProduct = ({ closeModal, setMustRefresh, mustRefresh }) => {
           `https://ladistribuidora.herokuapp.com/api/products`,
           body
         );
+        toast.success(`Producto creado correctamente`);
+        // setRefresh(!refresh);
         setRefresh(!refresh);
-        setMustRefresh(!mustRefresh);
+        closeModal();
       } else {
         console.log("Acceso no autorizado");
       }

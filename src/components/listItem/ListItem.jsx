@@ -4,19 +4,16 @@ import { FiEdit2 } from "react-icons/fi";
 import { AiFillDelete } from "react-icons/ai";
 import axios from 'axios';
 
-const ListItem = ({ producto, isAdmin, setIsOpen, setIdProductModal, setMustRefresh, mustRefresh }) => {
+const ListItem = ({ producto, isAdmin, setIsOpen, setIdProductModal, setRefresh, refresh }) => {
   const handleClick = () => {
     setIsOpen(true);
     setIdProductModal(producto._id);
   };
-  const handleClickDelete = () => {
+  const handleClickDelete = async() => {
     // setIsOpen(true);
     try {
-      const deleteProduct = async()=>{
-        await axios.delete(`https://ladistribuidora.herokuapp.com/api/products/${producto._id}`)
-      }
-      deleteProduct();
-      setMustRefresh(!mustRefresh);
+      await axios.delete(`https://ladistribuidora.herokuapp.com/api/products/${producto._id}`)
+      setRefresh(!refresh);
     } catch (error) {
       console.log(error);
     }

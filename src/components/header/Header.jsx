@@ -5,6 +5,8 @@ import { RiAdminFill } from "react-icons/ri";
 import LoginModal from "./loginModal/LoginModal";
 import { AiFillPlusCircle } from "react-icons/ai";
 import ReactTooltip from "react-tooltip";
+import { toast } from 'react-toastify';
+
 
 const Header = ({ isSigned, setIsSigned, isAdmin, setIsAdmin, openModal, setIsOpenNewProduct }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,6 +23,7 @@ const Header = ({ isSigned, setIsSigned, isAdmin, setIsAdmin, openModal, setIsOp
           />
           <RiAdminFill
             onClick={() => {
+              toast.success(`Sesión cerrada correctamente`);
               setIsSigned(false);
               setIsAdmin(false);
             }}
@@ -46,7 +49,10 @@ const Header = ({ isSigned, setIsSigned, isAdmin, setIsAdmin, openModal, setIsOp
           <BiUserMinus
             data-tip
             data-for="signout"
-            onClick={() => setIsSigned(false)}
+            onClick={() =>{
+              toast.success(`Sesión cerrada correctamente`);
+              setIsSigned(false);
+            }}
           />
           <ReactTooltip
             id="signout"

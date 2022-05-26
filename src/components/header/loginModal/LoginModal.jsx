@@ -3,9 +3,11 @@ import ReactDom from "react-dom";
 import axios from "axios";
 import styles from "./loginModal.module.css";
 import { Formik } from "formik";
+import { toast } from 'react-toastify';
 
 const LoginModal = ({ closeModal, setIsAdmin, setIsSigned }) => {
   const [register, setRegister] = useState(false);
+
 
   const loginUser = async (valores) => {
     try {
@@ -23,10 +25,12 @@ const LoginModal = ({ closeModal, setIsAdmin, setIsSigned }) => {
       if (res.data.isAdmin) {
         setIsAdmin(true);
       }
-      window.alert("Sesión iniciada correctamente. Bienvenido");
+      // window.alert("Sesión iniciada correctamente. Bienvenido");
       localStorage.setItem("user",JSON.stringify(res.data));
+      toast.success(`Sesión iniciada. Bienvenido/a ${res.data.name}`);
     } catch (error) {
-      console.log(error);
+      // console.log(error.response.data);
+      toast.error(error.response.data);
     }
   };
 
@@ -47,9 +51,11 @@ const LoginModal = ({ closeModal, setIsAdmin, setIsSigned }) => {
       if (res.data.isAdmin) {
         setIsAdmin(true);
       }
-      window.alert("Registrado correctamente. Bienvenido");
+      // window.alert("Registrado correctamente. Bienvenido");
       localStorage.setItem("user",JSON.stringify(res.data));
+      toast.success(`Registrado correctamente. Bienvenido/a ${res.data.name}`);
     } catch (error) {
+      toast.error(error.response.data);
       console.log(error.response.data);
     }
   };
@@ -107,7 +113,7 @@ const LoginModal = ({ closeModal, setIsAdmin, setIsSigned }) => {
                     type="text"
                     id="name"
                     name="name"
-                    placeholder="Agustín Fernandez"
+                    placeholder="Nombre"
                     value={values.name}
                     onChange={handleChange}
                     onBlur={handleBlur}

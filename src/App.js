@@ -4,6 +4,8 @@ import List from "./components/list/List";
 import { useEffect, useState } from "react";
 import Modal from "./components/modal/Modal";
 import ModalNewProduct from "./components/header/modalNewProduct/ModalNewProduct";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [isSigned, setIsSigned] = useState(false);
@@ -11,13 +13,14 @@ function App() {
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenNewProduct, setIsOpenNewProduct] = useState(false);
   const [idProductModal, setIdProductModal] = useState("");
-  const [mustRefresh, setMustRefresh] = useState(false);
+  const [refresh, setRefresh] = useState(false);
+
 
   useEffect(() => {
-    if( localStorage.getItem("isSigned") === "true" ){
+    if (localStorage.getItem("isSigned") === "true") {
       setIsSigned(true);
-    } 
-    if( localStorage.getItem("isAdmin") === "true" ){
+    }
+    if (localStorage.getItem("isAdmin") === "true") {
       setIsAdmin(true);
     }
   }, []);
@@ -40,6 +43,17 @@ function App() {
 
   return (
     <>
+      <ToastContainer
+        position="top-center"
+        autoClose={1000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <Header
         isAdmin={isAdmin}
         isSigned={isSigned}
@@ -52,22 +66,22 @@ function App() {
         isAdmin={isAdmin}
         setIsOpen={setIsOpen}
         setIdProductModal={setIdProductModal}
-        mustRefresh={mustRefresh}
-        setMustRefresh={setMustRefresh}
+        refresh={refresh}
+        setRefresh={setRefresh}
       />
       {isOpen && (
         <Modal
           idProductModal={idProductModal}
           closeModal={() => setIsOpen(false)}
-          mustRefresh={mustRefresh}
-          setMustRefresh={setMustRefresh}
+          refresh={refresh}
+          setRefresh={setRefresh}
         />
       )}
       {isOpenNewProduct && (
         <ModalNewProduct
           closeModal={() => setIsOpenNewProduct(false)}
-          mustRefresh={mustRefresh}
-          setMustRefresh={setMustRefresh}
+          refresh={refresh}
+          setRefresh={setRefresh}
         />
       )}
     </>
