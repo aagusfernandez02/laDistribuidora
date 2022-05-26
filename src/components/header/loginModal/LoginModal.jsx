@@ -48,6 +48,7 @@ const LoginModal = ({ closeModal, setIsAdmin, setIsSigned }) => {
         setIsAdmin(true);
       }
       window.alert("Registrado correctamente. Bienvenido");
+      localStorage.setItem("user",JSON.stringify(res.data));
     } catch (error) {
       console.log(error.response.data);
     }
@@ -149,7 +150,7 @@ const LoginModal = ({ closeModal, setIsAdmin, setIsSigned }) => {
                   <span onClick={() => setRegister(false)}>Inicia sesión</span>
                 </p>
                 <button type="submit" className={styles.form_buttonRegister}>
-                  REGISTER
+                  REGISTRARSE
                 </button>
               </form>
             )}
