@@ -34,7 +34,7 @@ const ListItem = ({ producto, isAdmin, setIsOpen, setIdProductModal, setMustRefr
           </div>
         </>
       )}
-      <div className={styles.listItem}>
+      <div className={`${styles.listItem} ${!(producto.stock) && styles.noStock}`}>
         <img
           className={styles.listItem_item}
           src={producto.img}

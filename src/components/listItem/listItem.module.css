@@ -5,6 +5,11 @@
     border-bottom: 1px solid var(--dark-gray);
 }
 
+.noStock {
+    text-decoration: line-through;
+    filter: grayscale(1);
+}
+
 .listItem img {
     object-fit: contain;
     height: 150px;
