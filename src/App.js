@@ -14,6 +14,15 @@ function App() {
   const [mustRefresh, setMustRefresh] = useState(false);
 
   useEffect(() => {
+    if( localStorage.getItem("isSigned") === "true" ){
+      setIsSigned(true);
+    } 
+    if( localStorage.getItem("isAdmin") === "true" ){
+      setIsAdmin(true);
+    }
+  }, []);
+
+  useEffect(() => {
     if (isAdmin) {
       localStorage.setItem("isAdmin", "true");
     } else {
@@ -26,8 +35,6 @@ function App() {
       localStorage.setItem("isSigned", "true");
     } else {
       localStorage.setItem("isSigned", "false");
-      localStorage.setItem("user", "");
-
     }
   }, [isSigned]);
 
