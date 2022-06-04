@@ -49,6 +49,7 @@
     font-size: small;
     justify-content: center;
     align-items: center;
+    text-align: center;
     padding-top: 0.75em;
     padding-bottom: 0.75em;
     transition: .25s;
