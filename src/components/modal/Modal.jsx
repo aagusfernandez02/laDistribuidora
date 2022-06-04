@@ -13,7 +13,7 @@ const Modal = ({ refresh, setRefresh, idProductModal, closeModal }) => {
       if (localStorage.getItem("isAdmin") == "true") {
         const body = {
           producto: valores.producto,
-          marca: valores.marca,
+          marca: (valores.marca).toString().toLowerCase(),
           tamanio: valores.tamanio,
           precio: valores.precio,
           img: valores.img,

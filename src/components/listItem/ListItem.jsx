@@ -38,7 +38,8 @@ const ListItem = ({ producto, isAdmin, setIsOpen, setIdProductModal, setRefresh,
           alt={`Imagen del producto ${producto.producto} - ${producto.marca} - ${producto.tamanio} `}
         />
         <p className={styles.listItem_item}>{producto.producto}</p>
-        <p className={styles.listItem_item}>{producto.marca}</p>
+        <p className={styles.listItem_item}>{(producto.marca).toString().charAt(0).toUpperCase() +
+                    (producto.marca).toString().slice(1)}</p>
         <p className={styles.listItem_item}>{producto.tamanio}</p>
         <p className={styles.listItem_item}>{producto.precio}</p>
       </div>

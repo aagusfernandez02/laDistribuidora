@@ -6,15 +6,51 @@ import Modal from "./components/modal/Modal";
 import ModalNewProduct from "./components/header/modalNewProduct/ModalNewProduct";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
 
 function App() {
+  const [products, setProducts] = useState([]);
+  const [marcas, setMarcas] = useState([]);
+  const [refresh, setRefresh] = useState(false);
+  const [marcaProductos, setMarcaProductos] = useState("all");
+
   const [isSigned, setIsSigned] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenNewProduct, setIsOpenNewProduct] = useState(false);
   const [idProductModal, setIdProductModal] = useState("");
-  const [refresh, setRefresh] = useState(false);
 
+  // FETCH PRODUCTS
+  useEffect( ()=>{
+    const makeRequest = async()=>{
+      try {
+        let res = "";
+        if( marcaProductos!=="all" ){
+          res = await axios.get(`https://ladistribuidora.herokuapp.com/api/products?marca=${marcaProductos}`);
+        }else{
+          res = await axios.get("https://ladistribuidora.herokuapp.com/api/products");
+        }
+        setProducts(res.data);
+        setRefresh(!refresh);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    makeRequest();
+  },[refresh]);
+
+  // FETCH MARCAS
+  useEffect( ()=>{
+    const makeRequest = async()=>{
+      try {
+        const res = await axios.get("https://ladistribuidora.herokuapp.com/api/marcas");
+        setMarcas(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    makeRequest();
+  },[refresh]);
 
   useEffect(() => {
     if (localStorage.getItem("isSigned") === "true") {
@@ -68,6 +104,10 @@ function App() {
         setIdProductModal={setIdProductModal}
         refresh={refresh}
         setRefresh={setRefresh}
+        products={products}
+        marcas={marcas}
+        setMarcaProductos={setMarcaProductos}
+        marcaProductos={marcaProductos}
       />
       {isOpen && (
         <Modal

@@ -11,6 +11,12 @@
     border-bottom: 2px solid var(--dark-gray);
     background-color: var(--white);
     z-index: 1000;
+    /* height: 5vh; */
+}
+
+.marcas_btn {
+    position: relative;
+    cursor: pointer;
 }
 
 .headers p {
@@ -19,6 +25,43 @@
     font-weight: bold;
     padding-top: 1em;
     padding-bottom: 1em;
+    height: 7vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dropdown {
+    position: absolute;
+    top: 7vh;
+    left: 15px;
+    width: 20vw;
+    transform: translateX(-45%);
+    /* padding: 1rem; */
+    overflow: hidden;
+    background-color: var(--white);
+    border-bottom: 2px solid #000000;
+}
+
+.menu_item {
+    display: flex;
+    align-items: center;
+    font-size: small;
+    justify-content: center;
+    align-items: center;
+    padding-top: 0.75em;
+    padding-bottom: 0.75em;
+    transition: .25s;
+}
+
+.menu_item:hover {
+    background-color: var(--light-gray);
+    transition: .25s;
+}
+
+.marcaSeleccionada {
+    font-size: small;
+    opacity: .8;
 }
 
 @media (max-width: 768px) {

@@ -15,7 +15,7 @@ const ModalNewProduct = ({ closeModal, setRefresh, refresh }) => {
       if (localStorage.getItem("isAdmin") === "true") {
         const body = {
           producto: valores.producto,
-          marca: valores.marca,
+          marca: (valores.marca).toString().toLowerCase(),
           tamanio: valores.tamanio,
           precio: valores.precio,
           img: valores.img,
@@ -107,7 +107,8 @@ const ModalNewProduct = ({ closeModal, setRefresh, refresh }) => {
                   id="marca"
                   name="marca"
                   placeholder="Baggio, Tia Maruca, etc"
-                  value={values.marca}
+                  value={(values.marca).toString().charAt(0).toUpperCase() +
+                    (values.marca).toString().slice(1)}
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
