@@ -90,10 +90,18 @@
         right: -1rem;
         font-size: small;
     }
+    .marcaSeleccionada {
+        font-size: smaller;
+        opacity: .8;
+    }
 }
 
 @media (max-width: 480px) {
     .headers p {
         font-size: x-small;
+    }
+    .marcaSeleccionada {
+        font-size: xx-small;
+        opacity: .8;
     }
 }
