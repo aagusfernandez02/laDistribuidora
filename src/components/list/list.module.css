@@ -19,6 +19,20 @@
     cursor: pointer;
 }
 
+.dropdown_btn {
+    position: absolute;
+    top: 35%;
+    right: -1.5rem;
+    font-size: large;
+    transform: rotate(0deg);
+    transition: .35s;
+}
+
+.dropdown_btn_active {
+    transform: rotate(-180deg);
+    transition: .35s;
+}
+
 .headers p {
     min-width: 20%;
     text-align: center;
@@ -46,7 +60,7 @@
 .menu_item {
     display: flex;
     align-items: center;
-    font-size: small;
+    font-size: xx-small;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -69,6 +83,11 @@
     .headers p {
         padding-top: 0.5em;
         padding-bottom: 0.5em;
+        font-size: small;
+    }
+    .dropdown_btn {
+        top: 2.5vh;
+        right: -1rem;
         font-size: small;
     }
 }

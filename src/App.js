@@ -29,9 +29,15 @@ function App() {
           res = await axios.get(`https://ladistribuidora.herokuapp.com/api/products?marca=${marcaProductos}`);
         }else{
           res = await axios.get("https://ladistribuidora.herokuapp.com/api/products");
+          // Si quiero ordenar por producto:
+          // res.data.sort((a,b)=>(a.producto > b.producto?1:-1));
+          // Si quiero ordenar por marca:
+          res.data.sort((a,b)=>(a.marca > b.marca?1:-1));
+          // Si quiero ordenar por precio:
+          // res.data.sort((a,b)=>(a.precio > b.precio?1:-1));
         }
         setProducts(res.data);
-        setRefresh(!refresh);
+        // setRefresh(!refresh);
       } catch (error) {
         console.log(error);
       }
@@ -44,6 +50,7 @@ function App() {
     const makeRequest = async()=>{
       try {
         const res = await axios.get("https://ladistribuidora.herokuapp.com/api/marcas");
+        res.data.sort((a,b)=>(a.marca > b.marca?1:-1));
         setMarcas(res.data);
       } catch (error) {
         console.log(error);

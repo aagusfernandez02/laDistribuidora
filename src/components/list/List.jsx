@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "./list.module.css";
 import ListItem from "../listItem/ListItem";
+import { IoMdArrowDropdownCircle } from "react-icons/io";
 
 const List = ({
   products,
@@ -26,7 +27,8 @@ const List = ({
         >
           <p>Marca{(marcaProductos!=="all") && <span className={styles.marcaSeleccionada}>({(marcaProductos).toString().charAt(0).toUpperCase() +
                     (marcaProductos).toString().slice(1)})</span>}</p>
-          {dropDownOpen && <DropDownMenu marcas={marcas} setMarcaProductos={setMarcaProductos} />}
+          <IoMdArrowDropdownCircle className={`${styles.dropdown_btn} ${dropDownOpen && styles.dropdown_btn_active}`}/>
+          {dropDownOpen && <DropDownMenu marcas={marcas} setMarcaProductos={setMarcaProductos} refresh={refresh} setRefresh={setRefresh}/>}
         </div>
         <p>Tamaño</p>
         <p>Precio</p>
@@ -48,12 +50,12 @@ const List = ({
   );
 };
 
-const DropDownMenu = ({ marcas,setMarcaProductos }) => {
+const DropDownMenu = ({ marcas, setMarcaProductos, refresh, setRefresh }) => {
   return (
     <div className={styles.dropdown}>
       <span 
         className={styles.menu_item}
-        onClick={()=>setMarcaProductos("all")}
+        onClick={()=>{setMarcaProductos("all"); setRefresh(!refresh)}}
       >
         Todos
       </span>
@@ -61,7 +63,7 @@ const DropDownMenu = ({ marcas,setMarcaProductos }) => {
         <span 
           className={styles.menu_item} 
           key={marca._id}
-          onClick={()=>setMarcaProductos(marca.marca)}
+          onClick={()=>{setMarcaProductos(marca.marca); setRefresh(!refresh)}}
         >
           {marca.marca.toString().charAt(0).toUpperCase() +
             marca.marca.toString().slice(1)}

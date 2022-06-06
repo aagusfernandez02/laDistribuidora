@@ -130,7 +130,8 @@ const Modal = ({ refresh, setRefresh, idProductModal, closeModal }) => {
                   id="marca"
                   name="marca"
                   placeholder="Baggio, Tia Maruca, etc"
-                  value={values.marca}
+                  value={(values.marca).toString().charAt(0).toUpperCase() +
+                    (values.marca).toString().slice(1)}
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
